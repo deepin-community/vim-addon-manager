@@ -1,0 +1,6 @@
+addon: foo
+description: "foo"
+files:
+  - syntax/foo.vim
+  - ftplugin/foo.vim
+disabledby: "let foo_disabled = 1"

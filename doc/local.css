@@ -1,0 +1,17 @@
+body {
+  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+#vim-addon-manager #installation pre, pre.shell {
+  background: black;
+  color: white;
+}
+#vim-addon-manager #installation pre {
+  margin-left: 48px;
+}
+#vim-addon-manager #installation div.debian {
+  background: 0px 50% url(img/debian.png) no-repeat;
+}
+#vim-addon-manager #installation div.rubygems {
+  background: 0px 50% url(img/rubygems.png) no-repeat;
+}

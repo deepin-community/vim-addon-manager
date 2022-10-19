@@ -1,0 +1,4 @@
+addon: withdoc
+description: "withdoc"
+files:
+  - doc/withdoc.txt

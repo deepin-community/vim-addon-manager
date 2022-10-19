@@ -1,0 +1,108 @@
+
+Vim Addon Registry
+==================
+
+On-Disk Format
+--------------
+
+The registry is stored on disk as a single directory directly (i.e. not in any
+sub-directory) containing a set of files in YAML [1] format. At the time of
+writing the directory containing the Vim addon registry is
+/usr/share/vim/registry/.
+
+Each file is a multi-document YAML file (i.e. it can be composed by several
+different YAML documents separated by "---" lines). Each YAML document represent
+a registry entry, that is the information describing a single addon.
+
+Ideally, the registry directory contains one file per package shipping addons;
+with a filename obeying to the convention PACKAGE-NAME.yaml. Hence a single
+package can contribute to the registry with multiple entries described in a
+single YAML file.
+
+For example, the "vim-scripts" package should ship a single
+/usr/share/vim/registry/vim-scripts.yaml file, containing one YAML document per
+shipped addon. The first lines of such file can look like the following (two
+space of indentation manually added to the present text file):
+
+  addon: alternate
+  description: "alternate pairing files (e.g. .c/.h) with short ex-commands"
+  basedir: /usr/share/vim-scripts/
+  files:
+    - plugin/a.vim
+    - doc/alternate.txt
+  ---
+  addon: whatdomain
+  description: "query the meaning of a Top Level Domain"
+  basedir: /usr/share/vim-scripts/
+  files:
+    - plugin/whatdomain.vim
+  ---
+
+Each registry entry may contain the following fields, to be typeset according to
+the YAML specification:
+
+  addon:
+
+    name of the addon (required field)
+
+  description:
+
+    human understandable textual description of the addon (required field)
+
+  type:
+
+    The type of the addon. Currently there are two types of addons.
+
+    Addons with type "legacy" (the default) are old-style addons: each of its
+    files (listed in the "files" field) will be symlinked into the target
+    installation directory.
+
+    Addons with type "directory" must install to a single directory, and their
+    installation will result in a single symlink under $target_dir/vam, which
+    will be added to vim's runtimepath. This is the recommended addon type; see
+    addon-directory.markdown for details.
+
+    If the "type" field is omitted, it is assumed "legacy". This is to keep
+    backwards compatibility with previous addons.
+
+  files:
+
+    list of the files which compose the addon and are required to be present in
+    a component of the Vim runtime path for the addon to be enabled.  Each file
+    is specified relative to a component of the Vim runtime path (required
+    field for addons of type "legacy".)
+
+  directory:
+
+    for addons of type "directory", this field should indicate the directory in
+    which the addon is installed. If omitted, it is assumed the addon is
+    installed to a subdirectory of /usr/share/vim/addons/vam.
+
+  legacy_files:
+
+    for addons that were of type "legacy" and migrated to the type "directory",
+    this field must list the files that the addon used to contain. This
+    information is used when trying to automatically upgrade the addons
+    installed by users from the old format to the new format.
+
+  basedir:
+
+    directory where the files shipped by the addon (i.e. where the symlinks of
+    the user/sysadm should point to) reside on the filesystem (optional field,
+    default to: /usr/share/vim/addons)
+
+  disabledby:
+
+    vim script command that can be used (usually by adding it to ~/.vimrc) to
+    prevent the addon from being used even when it is installed.  The intended
+    usage of this field is to "blacklist" an undesired addon whose files are
+    available, and hence automatically loaded by Vim, in a component of the
+    Vim runtime path.  (optional field)
+
+References
+----------
+
+[1] http://www.yaml.org/
+
+Stefano Zacchiroli <zack@debian.org>
+-- Tue, 23 Jan 2007 15:12:00 +0100 zack

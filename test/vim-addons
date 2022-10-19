@@ -1,0 +1,8 @@
+#!/bin/sh
+
+basename=$(basename $0)
+root=$(dirname $0 | xargs dirname | xargs readlink -f)
+
+export RUBYLIB="$root/lib"
+
+exec "$root/bin/$basename" --source-dir "$root/spec/data/scripts"  --registry-dir "$root/spec/data/registry" --target-dir "$root/tmp" "$@"

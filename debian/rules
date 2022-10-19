@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+
+%:
+	debian/release-check || true
+	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_auto_install:
+	dh_auto_install
+	make -C doc/
+
+override_dh_auto_clean:
+	dh_auto_clean
+	make -C doc/ clean

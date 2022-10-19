@@ -1,0 +1,5 @@
+addon: newstylewithdir
+description: "new style addon with a directory instead of files"
+type: directory
+directory: /path/to/newstylewithdir
+

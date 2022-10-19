@@ -1,0 +1,4 @@
+usr/share/bash-completion/completions/vim-addon-manager usr/share/bash-completion/completions/vam
+usr/share/bash-completion/completions/vim-addon-manager usr/share/bash-completion/completions/vim-addons
+usr/share/man/man1/vim-addon-manager.1 usr/share/man/man1/vam.1
+usr/share/man/man1/vim-addon-manager.1 usr/share/man/man1/vim-addons.1

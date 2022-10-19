@@ -1,0 +1,10 @@
+*newstyle.txt*   test addon
+
+		  VIM REFERENCE MANUAL    by Antonio Terceiro
+
+*newstyle* *newstyle.vim*
+
+This plugin is a test.
+
+{Vi does not have any of this - of course!}
+

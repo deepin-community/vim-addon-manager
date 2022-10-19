@@ -1,0 +1,52 @@
+Short term
+==========
+
+- Get vim to load vimrc files provided by packages:
+
+  " Support .d-style configuration directory. All files under /etc/vim/vimrc.d/
+  " will be sourced.
+  for rcfile in split(glob('/etc/vim/vimrc.d/*.vim'))
+    execute 'source ' . rcfile
+  endfor
+
+- update documentation:
+
+  + vim-policy (debian/policy/ on vim source package)
+
+  Note the fact that new-style addons must provide pre-built tag files
+
+- figure out the upgrade path for addons that move from the "everything mixed
+  together in /usr/share/vim/addons" to the "new layout", i.e. all addon files
+  together, separated from other addons, in
+  /usr/share/vim/addons/$whatever/$addonname
+
+  - add a `cleanup` command to remove dangling symlinks from the target
+    directory?
+
+  - add an `upgrade` command to figure out which addons should be installed
+    based on the dangling symlinks, them removing those symlinks and
+    re-installing the addons in the new way?
+
+    - addons could just change the 'files' attribute to 'oldfiles' or something
+      like that, so that they could reconstruct objects using the legacy addon
+      class, them remove the legacy installations, then installing the new
+      addon.
+
+Middle/Long term
+================
+
+- Allow the admin to declare whether they want registered addons to be
+  automatically installed system-wide.  Use debconf & dpkg triggers?
+
+- implement some way to install stuff from remote servers:
+  - git repositories
+  - .zip files from vim.org
+  - etc
+
+  It would be cooler if these addons first went into a separate registry (e.g.
+  /var/lib/vim/registry/ system-wide and ~/.vim/registry and them were
+  installed like regular addons)
+
+- look closer at http://www.vim.org/scripts/script.php?script_id=2905
+
+  we must fix the view that vim-addon-manager is "Debian specific"

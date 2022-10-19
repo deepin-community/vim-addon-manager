@@ -1,0 +1,4 @@
+addon: bar
+description: "bar"
+files:
+  - syntax/bar.vim

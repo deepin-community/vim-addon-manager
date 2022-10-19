@@ -1,0 +1,4 @@
+execute 'set runtimepath=' . $PWD . '/tmp'
+set nocompatible
+source etc/vim/vimrc.d/vim-addon-manager.vim
+syntax on

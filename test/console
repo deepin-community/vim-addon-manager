@@ -1,0 +1,5 @@
+#!/bin/sh
+
+root=$(dirname $0 | xargs dirname | xargs readlink -f)
+
+irb -I$root/lib -rvim/addon_manager -rvim/addon_manager/registry -r./spec/spec_helper -r'./test/console.rb'

@@ -1,0 +1,215 @@
+vim-addon-manager (0.5.10) unstable; urgency=medium
+
+  * Improve usage of Etc module (Closes: #923152)
+  * cucumber: run against system binaries under autopkgtest
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 24 Feb 2019 19:22:54 -0300
+
+vim-addon-manager (0.5.9) unstable; urgency=medium
+
+  [ Ville Skyttä ]
+  * Avoid leaking local variables from bash completion into the user's shell.
+
+  [ James McCoy ]
+  * Change Maintainer email to team+vim@tracker.debian.org
+  * Declare compliance with Policy 4.1.5, no changes needed.
+
+ -- James McCoy <jamessan@debian.org>  Wed, 11 Jul 2018 19:58:48 -0400
+
+vim-addon-manager (0.5.8) unstable; urgency=medium
+
+  * control: Set Vcs-* to salsa.debian.org
+  * copyright: Update URLs for Format and Source
+  * Bump debhelper compat to 11
+  * Declare compliance with Policy 4.1.4, no changes needed
+
+ -- James McCoy <jamessan@debian.org>  Thu, 31 May 2018 19:45:39 -0400
+
+vim-addon-manager (0.5.7) unstable; urgency=medium
+
+  [ David Rabel ]
+  * Bump Standards-Version to 4.1.3
+  * Change priority from extra to optional
+
+  [ Antonio Terceiro ]
+  * debian/rules: call debian/release-check but ignore results, as a warning.
+  * Set Rules-Requires-Root: no
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 13 Jan 2018 11:08:32 -0200
+
+vim-addon-manager (0.5.6) unstable; urgency=medium
+
+  [ James McCoy ]
+  * Various spelling fixes
+  * AddonManager: Use multi-argument form of system to avoid shell
+  * Bump Vim::AddonManager::VERSION to released version
+
+  [ Antonio Terceiro ]
+  * provide bash completion symlinks for `vim-addons` and `vam`
+  * Bump Standards-Version to 3.9.8; no changes needed
+
+ -- Antonio Terceiro <terceiro@debian.org>  Wed, 14 Dec 2016 18:05:49 -0200
+
+vim-addon-manager (0.5.5) unstable; urgency=medium
+
+  * remove bash completion from /etc/ (which was previosly a configuration
+    file) on upgrades (Closes: #798400)
+  * Switch Vcs-* to https URLs
+  * Bump debhelper compatibility level to 9
+  * debian/control:
+    - wrap-and-sort --wrap-always
+    - add Testsuite: autopkgtest-pkg-ruby
+  * debian/rules: check dependencies (for when we actually have any)
+  * debian/vim-addon-manager.links: wrap-and-sort
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 16 Feb 2016 16:01:47 -0200
+
+vim-addon-manager (0.5.4) unstable; urgency=medium
+
+  * Port test suite to Rspec 3 (Closes: #797262)
+  * install bash completions to usr/share/bash-completion/completions
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 05 Sep 2015 09:22:14 -0300
+
+vim-addon-manager (0.5.3) unstable; urgency=low
+
+  [ James McCoy ]
+  * Use a standard directory mode when installing an addon as root.  (Closes:
+    #680624)
+  * Fallback to using getent if $HOME isn't set.  Thanks to Helmut Grohne for
+    the patch.  (Closes: #726329)
+  * Write each element of override_lines to 000-vim-addons.vim instead of a
+    stringified version of the array.  (Closes: #731191)
+  * Lintian:
+    - ancient-standards-version: Bump to 3.9.5, no changes needed.
+    - vcs-field-not-canonical: Update Vcs-* to canoncial URLs.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 03 Dec 2013 14:43:47 -0300
+
+vim-addon-manager (0.5.2) unstable; urgency=low
+
+  * New upload to remove `tags` file accidentally included in the source
+    package.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 30 Oct 2012 18:51:40 +0100
+
+vim-addon-manager (0.5.1) unstable; urgency=low
+
+  [ James McCoy ]
+  * Fix calls to override_file and logger.info.  (Closes: #681870)
+
+  [ Antonio Terceiro ]
+  * Fix regression that caused bash completion file to not be installed.
+  * Fix bash completion function to work with alternative program names
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 30 Oct 2012 16:39:20 +0100
+
+vim-addon-manager (0.5.0) unstable; urgency=low
+
+  * Addons now can now use a new layout: instead of having its files symlinked
+    into the target dir, they can install all their files into a single
+    directory that will be installed in the target dir and added to the vim
+    runtimepath. This feature is not complete yet, and will be finished with
+    the next release.
+  * New maintainer = myself.
+  * Turn vim-addon-manager into a proper Ruby package. This should have no
+    impact on end users, though. The source layout was changed to:
+    + library code in lib/
+    + main program in bin/
+    + src/Makefile moved to doc/Makefile; debian/rules and the Makefile itself
+      changed accordingly.
+  * Migrate to gem2deb. This adds support for having Ruby 1.9 as /usr/bin/ruby
+    (Closes: #655245)
+  * Bumped Standards-Version to 3.9.2. No changes needed.
+  * Avoid installing manpage sources into /usr/share/doc. Only install
+    doc/*.txt instead.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 22 Jan 2012 20:20:04 -0200
+
+vim-addon-manager (0.4.4) unstable; urgency=low
+
+  * Correct a check when removing an addon to avoid getting into a loop when
+    the target directory is a symlink.  (Closes: #634379)
+
+ -- James Vega <jamessan@debian.org>  Sun, 11 Sep 2011 11:09:48 -0400
+
+vim-addon-manager (0.4.3) unstable; urgency=low
+
+  * Don't try to remove “/path/to/addons/.”.  (Closes: #566186)
+  * Do not regenerate the helptags after removing the last
+    documentation-providing addon.  Simply remove the docs directory instead.
+
+ -- James Vega <jamessan@debian.org>  Thu, 21 Jan 2010 23:55:41 -0500
+
+vim-addon-manager (0.4.2) unstable; urgency=low
+
+  * debian/control:
+    - Add myself as an uploader
+    - Update Vcs-* fields to point to git
+    - Remove vim-tiny from Recommends since it's lacking +eval which most
+      addons need.
+  * Rename amend sub-command to enable.  Leave amend as an undocumented
+    command for a little while for people that are used to the old name.
+    (Closes: #501439)
+  * Remove empty directories left behind when removing addons.
+  * Include the target directory in the install/remove informational messages.
+    (Closes: #499563)
+  * Fix a spelling error in vim-addons(1).
+  * Add a man page describing the registry file format.  (Closes: #457040)
+
+ -- James Vega <jamessan@debian.org>  Wed, 20 Jan 2010 19:23:04 -0500
+
+vim-addon-manager (0.4.1) unstable; urgency=low
+
+  * bump Standards-Version, no changes needed
+  * set "Debian Vim Maintainers" as Maintainer, no Uploaders for the
+    moment. So long.
+
+ -- Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>  Tue, 21 Jul 2009 13:19:28 +0200
+
+vim-addon-manager (0.4) unstable; urgency=low
+
+  * vim-addons manpage: fix typo, s/linst/list/ (closes: #446527)
+  * remove TODO.Debian, the only item was done in 0.3
+  * use "status" as the default command when none is given
+  * fix the license header of the vim-addons main executable to GPL v3
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 29 Nov 2007 14:26:52 +0100
+
+vim-addon-manager (0.3) unstable; urgency=low
+
+  * debian/control
+    - better long description
+  * debian/copyright
+    - change license to GPL 3 or above, fixed source file headers accordingly
+  * vim-addons
+    - add 'show' command which show in a 822-like format a more detailed
+      report of each addons and its status (closes: #438154)
+    - add '-q' option which make the output of the 'status' command more
+      parsable and only show addons wrt the current execution mode
+      (system-wide or not)
+  * add bash completion script contributed by Antonio Terceiro
+    (closes: #440843); fix debian/*.install accordingly
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 24 Sep 2007 10:24:22 +0200
+
+vim-addon-manager (0.2) unstable; urgency=low
+
+  * uploading to unstable
+  * vim-addons:
+    - when files are installed or removed under doc/ run helpztags afterwards
+      to regenerate help tags
+    - avoid performing an action when there is no need to perform it
+    - added feedback messages for the user
+    - handle gracefully command line parsing errors (Closes: #420029)
+  * debian/control
+    - added dependency on vim-common, which ships /usr/bin/helpztags
+    - added XS-Vcs-* fields
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sun, 29 Apr 2007 11:29:11 +0200
+
+vim-addon-manager (0.1) experimental; urgency=low
+
+  * Initial release (closes: #409627)
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon,  5 Feb 2007 00:32:42 +0100

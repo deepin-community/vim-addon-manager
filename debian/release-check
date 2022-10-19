@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require './lib/vim/addon_manager/version.rb'
+
+pkg = `dpkg-parsechangelog -SVersion`.strip
+src = Vim::AddonManager::VERSION
+
+if pkg != src
+  puts "W: inconsistent versions! debian/changelog says #{pkg}, while lib/vim/addon_manager/version.rb says #{src}!"
+  exit 1
+end

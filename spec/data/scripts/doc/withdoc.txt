@@ -1,0 +1,9 @@
+*withdoc.txt*   test addon
+
+		  VIM REFERENCE MANUAL    by Antonio Terceiro
+
+*withdoc* *withdoc.vim*
+
+This plugin is a test.
+
+{Vi does not have any of this - of course!}

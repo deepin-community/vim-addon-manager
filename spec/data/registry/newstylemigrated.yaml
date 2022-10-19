@@ -1,0 +1,6 @@
+addon: newstylemigrated
+description: "new style addon that had a previous old-style version"
+type: directory
+legacy_files:
+  - syntax/newstylemigrated.vim
+  - ftplugin/newstylemigrated.vim

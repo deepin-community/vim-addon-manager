@@ -1,0 +1,13 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://salsa.debian.org/vim-team/vim-addon-manager
+
+Files: *
+Copyright: 2007 Stefano Zacchiroli <zack@debian.org>
+ 2012 Antonio Terceiro <terceiro@debian.org>
+License: GPL-3+
+ This program (together with its packaging) is free software; you can
+ redistribute it under the terms of the GNU General Public License as
+ published by the Free Software Foundation, either version 3 of the License,
+ or (at your option) any later version.
+ .
+ See `/usr/share/common-licenses/GPL-3' for the license text.

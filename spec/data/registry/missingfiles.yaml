@@ -1,0 +1,4 @@
+addon: missingfiles
+description: "missingfiles"
+files:
+  - syntax/missingfiles.vim
